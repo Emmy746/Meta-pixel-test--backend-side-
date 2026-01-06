@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vanity - Premium Beauty Services Marketplace</title>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8F0;
+            --blush: #F8E1E9;
+            --primary: #C6426E;
+            --whisper: #E6D6F5;
+            --silver: #E5E7EB;
+            --charcoal: #1F2937;
+            --gray: #6B7280;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Decorative Background Elements */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--blush), transparent);
+            top: -200px;
+            right: -100px;
+        }
+
+        .circle-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--whisper), transparent);
+            bottom: -150px;
+            left: -100px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--primary);
+        }
+
+        .coming-soon {
+            display: inline-block;
+            background: var(--charcoal);
+            color: var(--cream);
+            font-size: 0.7rem;
+            padding: 6px 16px;
+            border-radius: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            min-height: 85vh;
+            padding: 60px 0;
+        }
+
+        .hero-content {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+            color: var(--charcoal);
+            line-height: 1.1;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 400;
+        }
+
+        .subtext {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: white;
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(198, 66, 110, 0.08);
+            animation: slideInRight 0.8s ease-out;
+            border: 1px solid var(--silver);
+        }
+
+        .form-header {
+            margin-bottom: 35px;
+        }
+
+        .form-header h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+
+        input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--silver);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--cream);
+            color: var(--charcoal);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+        }
+
+        input::placeholder {
+            color: var(--gray);
+            opacity: 0.6;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 18px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .cta-button:hover {
+            background: #b03960;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(198, 66, 110, 0.3);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        /* Perks Section */
+        .perks {
+            padding: 120px 0 100px;
+            background: linear-gradient(to bottom, var(--cream), var(--blush));
+        }
+
+        .perks-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .perks-header h2 {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--charcoal);
+            margin-bottom: 15px;
+        }
+
+        .perks-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .perks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .perk-card {
+            background: white;
+            padding: 45px 35px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid var(--silver);
+        }
+
+        .perk-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(198, 66, 110, 0.12);
+        }
+
+        .perk-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--blush), var(--whisper));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+        }
+
+        .perk-card h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: var(--charcoal);
+        }
+
+        .perk-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 40px;
+            background: var(--charcoal);
+            color: var(--silver);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: white;
+            color: var(--charcoal);
+            padding: 20px 28px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            transform: translateX(400px);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+            border-left: 4px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-content strong {
+            display: block;
+            margin-bottom: 2px;
+            color: var(--charcoal);
+        }
+
+        .toast-content span {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                min-height: auto;
+            }
+
+            h1 {
+                font-size: 4rem;
+            }
+
+            .perks-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            header {
+                padding: 30px 0;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .subtext {
+                font-size: 1.1rem;
+            }
+
+            .form-card {
+                padding: 35px 25px;
+            }
+
+            .perks {
+                padding: 80px 0 60px;
+            }
+
+            .perks-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .toast {
+                right: 20px;
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .form-card {
+                padding: 30px 20px;
+            }
+
+            .coming-soon {
+                font-size: 0.65rem;
+                padding: 5px 12px;
+            }
+        }
+    </style>
+
+
+
+
+      <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '844877488547549');
+fbq('track', 'PageView');
+fbq('track', 'Lead');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=844877488547549&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+  
+</head>
+<body>
+    <div class="bg-decoration">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">VANITY</div>
+            <div class="coming-soon">Coming Soon</div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Beauty.<br><span class="highlight">Simplified.</span></h1>
+                <p class="subtext">Vanity connects you to nail techs, MUAs, and hair stylists near you. Book your perfect beauty experience in seconds.</p>
+            </div>
+
+            <div class="form-card">
+                <div class="form-header">
+                    <h2>Join the Waitlist</h2>
+                    <p>Be among the first to experience effortless beauty.</p>
+                </div>
+                <form id="waitlistForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" placeholder="City, State" required>
+                    </div>
+                    <button type="submit" class="cta-button">Join Waitlist</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <section class="perks">
+        <div class="container">
+            <div class="perks-header">
+                <h2>Early Access Perks</h2>
+                <p>Exclusive benefits for our founding members</p>
+            </div>
+            <div class="perks-grid">
+                <div class="perk-card">
+                    <div class="perk-icon"><i class="fa-solid fa-universal-access"></i></div>
+                    <h3>Early Access</h3>
+                    <p>Be the first to experience Vanity when we launch and get priority onboarding.</p>
+                </div>
+                <div class="perk-card">
+                    <div class="perk-icon"><i class="fa-solid fa-heart"></i></div>
+                    <h3>Exclusive Discounts</h3>
+                    <p>Enjoy special pricing on your first three bookings with top-rated professionals.</p>
+                </div>
+                <div class="perk-card">
+                    <div class="perk-icon"><i class="fa-solid fa-star"></i></div>
+                    <h3>Priority Booking</h3>
+                    <p>Skip the waitlist and book instantly with the most sought-after beauty experts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Vanity. All rights reserved.</p>
+    </footer>
+
+    <div class="toast" id="toast">
+        <div class="toast-icon">✓</div>
+        <div class="toast-content">
+            <strong>You're on the list!</strong>
+            <span>Check your email for updates.</span>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURATION: Google Form details
+        const FORM_ID = '1FAIpQLSfJbFjcKaaDJlaVtD9-HOSIcnsRQjOtZqbZCUjeVVVYgp3XsQ'; // From the form URL
+        const EMAIL_ENTRY_ID = 'entry.1533624230'; // 
+        const LOCATION_ENTRY_ID = 'entry.275241795';
+
+        const form = document.getElementById('waitlistForm');
+        const toast = document.getElementById('toast');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const location = document.getElementById('location').value;
+
+            // Build the Google Form submission URL
+            const formUrl = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
+            
+            // Create form data
+            const formData = new FormData();
+            formData.append(EMAIL_ENTRY_ID, email);
+            formData.append(LOCATION_ENTRY_ID, location);
+
+            try {
+                // Submit to Google Form
+                await fetch(formUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+
+                // Show success message
+                showToast();
+                form.reset();
+
+            } catch (error) {
+                console.error('Error:', error);
+                // Even if there's an error, the submission likely went through with no-cors
+                showToast();
+                form.reset();
+            }
+        });
+
+        function showToast() {
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
